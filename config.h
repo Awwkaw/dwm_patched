@@ -5,13 +5,16 @@ static const char *fonts[] = {
 	"monospace:size=10"
 };
 static const char dmenufont[]       = "monospace:size=10";
-static const char normbordercolor[] = "#582a21";
-static const char normbgcolor[]     = "#1e1e1e";
-static const char normfgcolor[]     = "#709289";
-static const char selbordercolor[]  = "#de5d31";
-static const char selbgcolor[]      = "#582a21";
-static const char selfgcolor[]      = "#d0f2e9";
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const char normbordercolor[] = "#450e02";
+static const char normbgcolor[]     = "#0a1f25";
+static const char normfgcolor[]     = "#7c1d07";
+static const char selbordercolor[]  = "#ad2805";
+static const char selbgcolor[]      = "#5b1404";
+static const char selfgcolor[]      = "#fbd5a1";
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute",     NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute",   NULL };
+static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 3;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -94,6 +97,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_plus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_dead_acute,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_dead_acute,  setgaps,        {.i = 0  } },
+	{ MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = downvol } },
+	{ MODKEY, 			XK_F9,	   spawn, 	   {.v = mutevol } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
